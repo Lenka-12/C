@@ -6,7 +6,7 @@
 - For example cd DSA for data structures
 - create build directory and change into it, mkdir build && cd build
 - if you want to build examples: type cmake ..
-- if not: type cmake -DBUILD_EXAMPLES=OFF
+- if not: type cmake -DBUILD_EXAMPLES=OFF ..
 - then type make
 - cd examples
 - ./main
