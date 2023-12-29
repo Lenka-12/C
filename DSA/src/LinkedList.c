@@ -353,3 +353,114 @@ void RReverse(LinkedList_t* pList,Node_t* pCurrNode, Node_t* pPrevNode){
         pList->m_pHeadNode= pPrevNode;
     }
 }
+
+LinkedList_t* Concatenate(LinkedList_t* pList1, LinkedList_t* pList2){
+    LinkedList_t *pList= (LinkedList_t*)malloc(sizeof(LinkedList_t));
+    CreateLinkedList(pList);
+
+    AppendList(pList,pList1);
+    AppendList(pList,pList2);
+    
+
+    return pList;
+
+
+}
+
+LinkedList_t* Merge(LinkedList_t* pList1, LinkedList_t* pList2){
+
+    LinkedList_t *pList= (LinkedList_t*)malloc(sizeof(LinkedList_t));
+    CreateLinkedList(pList);
+
+    Node_t* pList1CurrNode = pList1->m_pHeadNode;
+    Node_t* pList2CurrNode = pList2->m_pHeadNode;
+
+    if(pList1CurrNode==NULL && pList2CurrNode==NULL){
+        return pList;
+    }
+    else if(pList1CurrNode==NULL){
+        Copy(pList2,pList);
+    }
+    else if(pList2CurrNode==NULL){
+        Copy(pList1,pList);
+    }
+    else{
+        while( pList2CurrNode!=NULL && pList1CurrNode!=NULL){
+        
+            if(pList1CurrNode->m_iData < pList2CurrNode->m_iData){
+                InsertAtEnd(pList,pList1CurrNode->m_iData);
+                pList1CurrNode = pList1CurrNode->m_pNextNode;
+            }
+
+            else{
+                InsertAtEnd(pList,pList2CurrNode->m_iData);
+                pList2CurrNode = pList2CurrNode->m_pNextNode;
+
+            }
+
+        }
+        if (pList1CurrNode!=NULL || pList2CurrNode!=NULL){
+            LinkedList_t *pTempList = (LinkedList_t*)malloc(sizeof(LinkedList_t));
+            CreateLinkedList(pTempList);
+            if(pList1CurrNode!=NULL){
+                    pTempList->m_pHeadNode = pList1CurrNode;
+                    AppendList(pList,pTempList);
+            }
+
+            if(pList2CurrNode!=NULL){
+                pTempList->m_pHeadNode = pList2CurrNode;
+                AppendList(pList,pTempList);
+
+            }
+
+        }
+
+    }
+ 
+    return pList;
+
+
+}
+
+void Copy(LinkedList_t* pSrcList, LinkedList_t* pDstList){
+    Node_t *pCurrNode = pSrcList->m_pHeadNode;
+    if(pDstList->m_pHeadNode!=NULL){
+        FreeList(pDstList);
+    }
+
+    while (pCurrNode != NULL){
+        InsertAtEnd(pDstList,pCurrNode->m_iData);
+        pCurrNode = pCurrNode->m_pNextNode;
+    }
+}
+
+void AppendList(LinkedList_t *pToList, LinkedList_t* pThisList){
+    Node_t *pCurrNode = pThisList->m_pHeadNode;
+
+    while(pCurrNode!=NULL){
+        InsertAtEnd(pToList,pCurrNode->m_iData);
+        pCurrNode = pCurrNode->m_pNextNode;
+    }
+
+}
+
+int IsLoop(LinkedList_t* pList){
+    Node_t *pLeadNode = pList->m_pHeadNode;
+    Node_t *pTrailingNode = pLeadNode;
+    do{
+        pTrailingNode = pTrailingNode->m_pNextNode;
+        pLeadNode = pLeadNode->m_pNextNode;
+        pLeadNode = ((pLeadNode!=NULL) ? pLeadNode->m_pNextNode: NULL);
+    }
+    while(pLeadNode && pTrailingNode && pLeadNode!=pTrailingNode);
+
+    if (pLeadNode==pTrailingNode){
+        // Loop
+        return 1;
+    }
+    else{
+        // Linear
+        return 0;
+    }
+
+}

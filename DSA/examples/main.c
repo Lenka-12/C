@@ -51,7 +51,6 @@ int main(){
     Delete(pList,21);
     Delete(pList,10);
     Delete(pList,11);
-    printf("%d\n",(pList,0));
     Delete(pList,0);
     Display(pList);
     printf("\n..........................................................................................................\n\n");
@@ -100,7 +99,85 @@ int main(){
     printf("size: %ld\n",size(pList));
     printf(".............................................................................................................\n\n");
 
+
+
+
+    LinkedList_t* pList1 = (LinkedList_t* )malloc(sizeof(LinkedList_t));
+    CreateLinkedList(pList1);
+
+    LinkedList_t* pList2 = (LinkedList_t* )malloc(sizeof(LinkedList_t));
+    CreateLinkedList(pList2);
+
+    for(int i=-1; i<8; i++){
+        InsertAtEnd(pList1,i*3);
+    }
+
+
+    for(int i=1; i<14; i++){
+        InsertAtEnd(pList2,i*2);
+    }
+
+    SortedInsert(pList1,31);
+    SortedInsert(pList1,23);
+    SortedInsert(pList1,29);
+    SortedInsert(pList1,17);
+    SortedInsert(pList1,7);
+    SortedInsert(pList1,2);
+    SortedInsert(pList1,4);
+
+    SortedInsert(pList2,34);
+    SortedInsert(pList2,38);
+    SortedInsert(pList2,11);
+    SortedInsert(pList2,13);
+    SortedInsert(pList2,19);
+    SortedInsert(pList2,1);
+     printf(".............................................................................................................\n\n");
+    printf("List1...\n");
+    Display(pList1);
+    printf(".............................................................................................................\n\n");
+    printf("List2...\n");
+    Display(pList2);
+    LinkedList_t* pMerged = Merge(pList1,pList2);
+    RemoveDuplicates(pMerged);
+    LinkedList_t* pConct = Concatenate(pList1,pList2);
+    printf(".............................................................................................................\n\n");
+    printf("List1...\n");
+    Display(pList1);
+    printf(".............................................................................................................\n\n");
+    printf("List2...\n");
+    Display(pList2);
+    printf(".............................................................................................................\n\n");
+    printf("Merged...\n");
+    Display(pMerged);
+    printf(".............................................................................................................\n\n");
+    printf("Concatenated...\n");
+    Display(pConct);
+    printf(".............................................................................................................\n\n");
+
+    /*************************************************************
+     * IsLoop Test Code, Can be uncommented and comment out line freeing pMerged
+     * ***********************************************************
+    Node_t* pNode = pMerged->m_pHeadNode->m_pNextNode->m_pNextNode;
+
+    Node_t *pTemp = pMerged->m_pHeadNode;
+
+    while(pTemp->m_pNextNode != NULL){
+        pTemp = pTemp->m_pNextNode;
+    }
+    pTemp->m_pNextNode = pNode;
+
+    printf("Loop...\n");
+    printf("IsLoop: %d\n",IsLoop(pMerged));
+    **/
+    printf("Linear...\n");
+    printf("IsLoop: %d\n",IsLoop(pList1));
+
+
     free(pList);
+    free(pList1);
+    free(pList2);
+    FreeList(pConct);
+    FreeList(pMerged);
 
     return EXIT_SUCCESS;
 }

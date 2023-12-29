@@ -1,7 +1,10 @@
 #ifndef LINKEDLIST_H_
 #define LINKEDLIST_H_
-#include <stdio.h>
 
+#include <stdio.h>
+#define true 1
+#define false 0
+typedef int bool
 struct Node
 {
     int m_iData;     // Data of the Node
@@ -148,6 +151,36 @@ void Reverse(LinkedList_t* pList);
 /// @return None
 /// @note Call to RReverse should be like RReverse(pList,pList->m_pHeadNode,NULL)
 void RReverse(LinkedList_t* pList,Node_t* pCurrNode, Node_t* pPrevNode);
+
+/// @brief Merges two sorted LinkedList
+/// @param pList1 Pointer to first odered linkedlist
+/// @param pList2 Pointer to second sorted LinkedList
+/// @return Pointer to merged LinkedList
+LinkedList_t* Merge(LinkedList_t* pList1, LinkedList_t* pList2);
+
+/// @brief Concatenate two lunkedlists 
+/// @param pList1 Pointer to first LinkedList
+/// @param pList2  Pointer to second LinkedList
+/// @return  Pointer to concatenated LinkedList
+LinkedList_t* Concatenate(LinkedList_t* pList1, LinkedList_t* pList2);
+
+/// @brief Copy the contents of one LinkedList to another
+/// @param pSrcList pointer to source linkedlist
+/// @param pDstList pointer to destination linkedlist
+/// @return None
+/// @note if pDstList is not empty, it is cleared first
+void Copy(LinkedList_t* pSrcList, LinkedList_t* pDstList);
+
+/// @brief Append one LinkedList to another
+/// @param pToList  Pointer  to LinkedList to append to
+/// @param pThisList Pointer to LinkedList to be appended to pToList
+/// @return None
+void AppendList(LinkedList_t *pToList, LinkedList_t* pThisList);
+/// @brief Checks if LinkedList is a loop or Linear
+/// @param pList Pointer to a LinkedList
+/// @return 1 if it is a loop 0 linear
+int IsLoop(LinkedList_t* pList);
+
 
 
 #endif
