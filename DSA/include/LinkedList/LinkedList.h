@@ -2,9 +2,6 @@
 #define LINKEDLIST_H_
 
 #include <stdio.h>
-#define true 1
-#define false 0
-typedef int bool
 struct Node
 {
     int m_iData;     // Data of the Node
@@ -178,7 +175,7 @@ void Copy(LinkedList_t* pSrcList, LinkedList_t* pDstList);
 void AppendList(LinkedList_t *pToList, LinkedList_t* pThisList);
 /// @brief Checks if LinkedList is a loop or Linear
 /// @param pList Pointer to a LinkedList
-/// @return 1 if it is a loop 0 linear
+/// @return 1 if it is a loop 0 if linear
 int IsLoop(LinkedList_t* pList);
 
 
