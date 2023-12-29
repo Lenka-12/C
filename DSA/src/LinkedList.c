@@ -343,3 +343,13 @@ void Reverse(LinkedList_t* pList){
     pList->m_pHeadNode = pCurrNode;
 
 }
+void RReverse(LinkedList_t* pList,Node_t* pCurrNode, Node_t* pPrevNode){
+    if (pCurrNode!=NULL){
+        RReverse(pList,pCurrNode->m_pNextNode,pCurrNode);
+        pCurrNode->m_pNextNode=pPrevNode;
+    }
+
+    else{
+        pList->m_pHeadNode= pPrevNode;
+    }
+}

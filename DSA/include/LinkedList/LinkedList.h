@@ -141,4 +141,13 @@ void RemoveDuplicates(LinkedList_t* pList);
 /// @return None
 void Reverse(LinkedList_t* pList);
 
+/// @brief Recursively reverses a LinkedList
+/// @param pList Pointer to the LinkedLisr
+/// @param pCurrNode Pointer to head Node of pList
+/// @param pPrevNode NULL
+/// @return None
+/// @note Call to RReverse should be like RReverse(pList,pList->m_pHeadNode,NULL)
+void RReverse(LinkedList_t* pList,Node_t* pCurrNode, Node_t* pPrevNode);
+
+
 #endif
