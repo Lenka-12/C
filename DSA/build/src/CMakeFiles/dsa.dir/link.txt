@@ -1,0 +1,2 @@
+/usr/bin/ar qc libdsa.a CMakeFiles/dsa.dir/LinkedList.c.o
+/usr/bin/ranlib libdsa.a

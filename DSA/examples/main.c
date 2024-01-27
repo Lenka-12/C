@@ -3,9 +3,7 @@
 #include "LinkedList/LinkedList.h"
 
 int main(){
-    LinkedList_t* pList = (LinkedList_t* )malloc(sizeof(LinkedList_t));
-    // Create a LinkedList
-    CreateLinkedList(pList);
+    LinkedList_t* pList = CreateLinkedList();
 
 
     for (int i=0; i<20; i++){
@@ -102,11 +100,9 @@ int main(){
 
 
 
-    LinkedList_t* pList1 = (LinkedList_t* )malloc(sizeof(LinkedList_t));
-    CreateLinkedList(pList1);
+    LinkedList_t* pList1 = CreateLinkedList();
 
-    LinkedList_t* pList2 = (LinkedList_t* )malloc(sizeof(LinkedList_t));
-    CreateLinkedList(pList2);
+    LinkedList_t* pList2 = CreateLinkedList();
 
     for(int i=-1; i<8; i++){
         InsertAtEnd(pList1,i*3);

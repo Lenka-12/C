@@ -20,11 +20,9 @@ typedef struct LinkedList LinkedList_t;
  * LinkedList APIs, Please see src/LinkedList.c for full definitions
  *********************************************************************/
 
-/// @brief sets the head Node of the LinkedList to NULL
-/// @param pList Pointer to the LinkedList
-/// @return None
-/// @note pList should be a pointer to dynamic memory, this function must be called before a call to any other function
-void CreateLinkedList(LinkedList_t* pList);
+/// @brief create  a LinkedList
+/// @return pointer to the LinkedList
+LinkedList_t* CreateLinkedList();
 
 /// @brief Add a Node to the end of LinkedList 
 /// @param pList Pointer to the LinkeList to add a node to

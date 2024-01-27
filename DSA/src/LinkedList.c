@@ -2,9 +2,14 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include "LinkedList/LinkedList.h"
-void CreateLinkedList(LinkedList_t* pList){
+LinkedList_t* CreateLinkedList(){
+    LinkedList_t* pList = (LinkedList_t*)malloc(sizeof(LinkedList_t));
     pList->m_pHeadNode = NULL;
+    return pList;
+
+
 }
+
 
 void InsertAtEnd(LinkedList_t *pList, int iData){
     // Improve inserting at end by keeping track of last Node
@@ -355,8 +360,7 @@ void RReverse(LinkedList_t* pList,Node_t* pCurrNode, Node_t* pPrevNode){
 }
 
 LinkedList_t* Concatenate(LinkedList_t* pList1, LinkedList_t* pList2){
-    LinkedList_t *pList= (LinkedList_t*)malloc(sizeof(LinkedList_t));
-    CreateLinkedList(pList);
+    LinkedList_t *pList= CreateLinkedList();
 
     AppendList(pList,pList1);
     AppendList(pList,pList2);
@@ -369,8 +373,7 @@ LinkedList_t* Concatenate(LinkedList_t* pList1, LinkedList_t* pList2){
 
 LinkedList_t* Merge(LinkedList_t* pList1, LinkedList_t* pList2){
 
-    LinkedList_t *pList= (LinkedList_t*)malloc(sizeof(LinkedList_t));
-    CreateLinkedList(pList);
+    LinkedList_t *pList= CreateLinkedList();
 
     Node_t* pList1CurrNode = pList1->m_pHeadNode;
     Node_t* pList2CurrNode = pList2->m_pHeadNode;
@@ -400,8 +403,7 @@ LinkedList_t* Merge(LinkedList_t* pList1, LinkedList_t* pList2){
 
         }
         if (pList1CurrNode!=NULL || pList2CurrNode!=NULL){
-            LinkedList_t *pTempList = (LinkedList_t*)malloc(sizeof(LinkedList_t));
-            CreateLinkedList(pTempList);
+            LinkedList_t *pTempList = CreateLinkedList();
             if(pList1CurrNode!=NULL){
                     pTempList->m_pHeadNode = pList1CurrNode;
                     AppendList(pList,pTempList);
@@ -427,11 +429,7 @@ void Copy(LinkedList_t* pSrcList, LinkedList_t* pDstList){
     if(pDstList->m_pHeadNode!=NULL){
         FreeList(pDstList);
     }
-
-    while (pCurrNode != NULL){
-        InsertAtEnd(pDstList,pCurrNode->m_iData);
-        pCurrNode = pCurrNode->m_pNextNode;
-    }
+    AppendList(pDstList,pSrcList);
 }
 
 void AppendList(LinkedList_t *pToList, LinkedList_t* pThisList){

@@ -1,0 +1,10 @@
+/home/mlenka/dev/C/DSA/build/CMakeFiles/edit_cache.dir
+/home/mlenka/dev/C/DSA/build/CMakeFiles/rebuild_cache.dir
+/home/mlenka/dev/C/DSA/build/include/CMakeFiles/edit_cache.dir
+/home/mlenka/dev/C/DSA/build/include/CMakeFiles/rebuild_cache.dir
+/home/mlenka/dev/C/DSA/build/src/CMakeFiles/dsa.dir
+/home/mlenka/dev/C/DSA/build/src/CMakeFiles/edit_cache.dir
+/home/mlenka/dev/C/DSA/build/src/CMakeFiles/rebuild_cache.dir
+/home/mlenka/dev/C/DSA/build/examples/CMakeFiles/main.dir
+/home/mlenka/dev/C/DSA/build/examples/CMakeFiles/edit_cache.dir
+/home/mlenka/dev/C/DSA/build/examples/CMakeFiles/rebuild_cache.dir
